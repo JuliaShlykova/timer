@@ -16,7 +16,7 @@
 .display-timer {
   /* box-shadow: inset 0 0 20px rgba(0,0,0,0.3); */
   color: white;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px) drop-shadow(2px 2px 5px white);
 }
 .display-timer>span {
   font-size: 5rem;

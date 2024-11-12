@@ -17,6 +17,7 @@ const TimeInterval = (minutes) => {
       btnStart.disabled = false;
       let beat = new Audio('./assets/audio/last-stop.mp3');
       beat.play();
+      console.log(bgVideo.paused);
       bgVideo.pause();
     }
     let minutesLeft = Math.floor(timeLeft/60);

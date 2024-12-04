@@ -7,8 +7,6 @@ const displaySeconds = document.querySelector('#timer-seconds');
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 
-const bgVideo = document.querySelector('#bg-video');
-
 const TimeInterval = (minutes) => {
   let timeLeft = minutes * 60;
   const interval = setInterval(() => {
@@ -17,8 +15,6 @@ const TimeInterval = (minutes) => {
       btnStart.disabled = false;
       let beat = new Audio('./assets/audio/last-stop.mp3');
       beat.play();
-      console.log(bgVideo.paused);
-      bgVideo.pause();
     }
     let minutesLeft = Math.floor(timeLeft/60);
     displayMinutes.textContent = ((minutesLeft < 10)?'0':'') + minutesLeft;
@@ -32,13 +28,11 @@ const TimeInterval = (minutes) => {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (e.currentTarget.checkValidity()) {
-    bgVideo.play();
     const minutes = Number(userMinutes.value);
     const cleanup = TimeInterval(minutes);
     btnStart.disabled = true;
     btnStop.addEventListener('click', () => {
       cleanup();
-      bgVideo.pause();
       displayMinutes.textContent = displaySeconds.textContent = '00';
       btnStart.disabled = false;
       document.title = 'Timer';

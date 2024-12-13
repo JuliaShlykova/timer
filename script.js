@@ -7,13 +7,19 @@ const displaySeconds = document.querySelector('#timer-seconds');
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 
+const wave = document.querySelector('.wave');
+
 const TimeInterval = (minutes) => {
   let timeLeft = minutes * 60;
+  wave.style['animation-duration'] = timeLeft + 's';
+  wave.classList.add('moving');
   const interval = setInterval(() => {
     if (timeLeft === 0 ) {
+      wave.classList.remove('moving');
       clearInterval(interval);
       btnStart.disabled = false;
-      let beat = new Audio('./assets/audio/last-stop.mp3');
+      btnStop.disabled = true;
+      let beat = new Audio('./assets/audio/water-drip-double.mp3');
       beat.play();
     }
     let minutesLeft = Math.floor(timeLeft/60);
@@ -28,18 +34,22 @@ const TimeInterval = (minutes) => {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (e.currentTarget.checkValidity()) {
+    let beat = new Audio('./assets/audio/water-drip.mp3');
+    beat.play();
     const minutes = Number(userMinutes.value);
     const cleanup = TimeInterval(minutes);
     btnStart.disabled = true;
+    btnStop.disabled = false;
     btnStop.addEventListener('click', () => {
       cleanup();
+      wave.classList.remove('moving');
       displayMinutes.textContent = displaySeconds.textContent = '00';
       btnStart.disabled = false;
+      btnStop.disabled = true;
       document.title = 'Timer';
     })
   }
 })
-
 
 const api_url ="./assets/quotes.json";
 
@@ -54,5 +64,7 @@ async function changeQuote(url)  {
     author.textContent = data[i].author;
   }, 60 * 1000);
 }
+
+
 
 changeQuote(api_url);

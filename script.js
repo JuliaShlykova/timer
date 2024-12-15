@@ -9,6 +9,9 @@ const author = document.querySelector('.author');
 
 const wave = document.querySelector('.wave');
 
+let beatInput = new Audio('./assets/audio/water-drip.mp3');
+let beatOutput = new Audio('./assets/audio/water-drip-double.mp3');
+
 const TimeInterval = (minutes) => {
   let timeLeft = minutes * 60;
   wave.style['animation-duration'] = timeLeft + 's';
@@ -19,8 +22,7 @@ const TimeInterval = (minutes) => {
       clearInterval(interval);
       btnStart.disabled = false;
       btnStop.disabled = true;
-      let beat = new Audio('./assets/audio/water-drip-double.mp3');
-      beat.play();
+      beatOutput.play();
     }
     let minutesLeft = Math.floor(timeLeft/60);
     displayMinutes.textContent = ((minutesLeft < 10)?'0':'') + minutesLeft;
@@ -34,8 +36,7 @@ const TimeInterval = (minutes) => {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   if (e.currentTarget.checkValidity()) {
-    let beat = new Audio('./assets/audio/water-drip.mp3');
-    beat.play();
+    beatInput.play();
     const minutes = Number(userMinutes.value);
     const cleanup = TimeInterval(minutes);
     btnStart.disabled = true;

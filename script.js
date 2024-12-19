@@ -1,13 +1,25 @@
-const btnStart = document.querySelector('#btn-start');
+const root = document.querySelector('.root');
 const form = document.querySelector('form');
+const btnStart = document.querySelector('#btn-start');
 const btnStop = document.querySelector('#btn-stop');
+const btnChangeBg = document.querySelector('#btn-changeBg');
 const userMinutes = document.querySelector('#minutes');
 const displayMinutes = document.querySelector('#timer-minutes');
 const displaySeconds = document.querySelector('#timer-seconds');
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
-
 const wave = document.querySelector('.wave');
+
+const arrBg = ['beacon.jpg', 'city.jpg', 'mountains.jpg', 'clouds.jpg'];
+let iBg = arrBg.length-1;
+
+btnChangeBg.addEventListener('click', () => {
+  if (iBg < 0) {
+    iBg = arrBg.length-1;
+  }
+  root.style.background = `url(./assets/${arrBg[iBg]})`;
+  iBg--;
+});
 
 let beatInput = new Audio('./assets/audio/water-drip.mp3');
 let beatOutput = new Audio('./assets/audio/water-drip-double.mp3');
@@ -65,7 +77,5 @@ async function changeQuote(url)  {
     author.textContent = data[i].author;
   }, 60 * 1000);
 }
-
-
 
 changeQuote(api_url);

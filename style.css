@@ -21,6 +21,16 @@ button:disabled:hover {
   cursor: not-allowed;
 }
 
+#btn-changeBg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 0.7rem;
+}
+
 .root {
   --water-color: rgba(175, 206, 220, 0.7);
   --fill-color: rgba(8, 39, 53, 0.8);

@@ -17,7 +17,7 @@ btnChangeBg.addEventListener('click', () => {
   if (iBg < 0) {
     iBg = arrBg.length-1;
   }
-  root.style.background = `url(./assets/${arrBg[iBg]})`;
+  root.style.backgroundImage = `url(./assets/${arrBg[iBg]})`;
   iBg--;
 });
 

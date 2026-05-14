@@ -1,6 +1,17 @@
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
   font-size: 18px;
   color: white;
 }
@@ -36,33 +47,34 @@ button:disabled:hover {
   --fill-color: rgba(8, 39, 53, 0.8);
   background-image: url(./assets/beacon.jpg);
   background-size: cover;
-  height: 100svh;
+  height: 100dvh;
   display: grid;
-  grid-template-rows: 200px auto 1fr;
+  grid-template-rows: min(200px, 20dvh) auto 1fr;
   grid-template-columns: minmax(auto, 50ch);
   justify-content: center;
   justify-items: center;
+  overflow: hidden;
 }
 
 .text-container {
+  padding: 0 min(20px, 5vw);
   align-content: end;
   color: black;
-  
+
   .quote {
   }
 
   .author {
     text-align: end;
     font-size: 0.9rem;
-
   }
 }
 
 .display-timer {
   position: relative;
   /* border: 4px solid var(--water-color); */
-  width: 400px;
-  height: 400px;
+  width: min(400px, 100dvw);
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -87,21 +99,21 @@ button:disabled:hover {
 }
 
 .moving {
-	animation: fill 5s linear;
+  animation: fill 5s linear;
 }
 
 @keyframes fill {
-	from {
-		transform: translateY(100%);
-	}
+  from {
+    transform: translateY(100%);
+  }
 
-	to {
-		transform: none;
-	}
+  to {
+    transform: none;
+  }
 }
 
 .timer {
-  position:absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -109,18 +121,18 @@ button:disabled:hover {
   flex-direction: row;
 }
 
-.timer>span {
+.timer > span {
   font-size: 6rem;
 }
 
-form { 
+form {
   padding-top: 20px;
   display: flex;
   flex-direction: row;
   gap: 5px;
   --size: 3rem;
 
-  &>* {
+  & > * {
     border-radius: 50%;
     width: var(--size);
     height: var(--size);
@@ -136,7 +148,7 @@ form {
       display: none;
     }
   }
-  
+
   button {
     font-size: 2rem;
     background-color: var(--water-color);
@@ -147,7 +159,7 @@ form {
       opacity: 0.4;
     }
 
-    &>svg {
+    & > svg {
       fill: var(--fill-color);
     }
   }
